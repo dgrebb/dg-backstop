@@ -54,16 +54,13 @@ function addTestButton() {
         },
       });
       if (!response.ok) {
-        window.alert("The remote server no appear to be running.");
+        window.location.reload(true);
         throw new Error("BackstopJS Remote Server Not Running");
       } else {
-        testButton.disabled = false;
-        testButton.classList.toggle("running", false);
-        window.location.reload();
+        window.location.reload(true);
       }
     } catch (error) {
-      testButton.classList.toggle("running", false);
-      window.alert("Backstop remote no running");
+      window.location.reload(true);
       console.error(
         "There was a problem requesting a test run from Backstop Remote.",
         error
@@ -95,7 +92,7 @@ function addRefButton() {
         },
       });
       if (!response.ok) {
-        window.alert("The remote server no appear to be running.");
+        window.location.reload(true);
         throw new Error("BackstopJS Remote Server Not Running");
       } else {
         refButton.disabled = false;
@@ -103,6 +100,7 @@ function addRefButton() {
         window.location.reload(true);
       }
     } catch (error) {
+      refButton.disabled = false;
       refButton.classList.toggle("running", false);
       window.location.reload(true);
       console.error(
